@@ -10,39 +10,13 @@ body {
     padding: 20px;
   }
   
-  h2, h3 {
-    color: white;
+  h1, h2, h3 {
+    color: yellow;
   }
   
-  .comments {
-    margin-top: 20px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    margin-bottom: 10px;
-    border-bottom: 1px solid white;
-    padding-bottom: 10px;
-  }
-  
-  form {
-    margin-top: 20px;
-  }
-  
-  input, textarea {
+  #comment-form input,
+  #comment-form textarea,
+  #comment-form button {
     display: block;
     margin-bottom: 10px;
-    width: 100%;
-  }
-  
-  button {
-    background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
   }
