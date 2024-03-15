@@ -1,5 +1,5 @@
 // Fetch API to GET the comments from the Markdown file
-fetch('/comments.md')
+fetch('comments.md')
   .then(response => response.text())
   .then(data => {
     // Parse the Markdown file and extract the comments
