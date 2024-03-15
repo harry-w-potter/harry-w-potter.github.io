@@ -12,7 +12,7 @@ function submitComment(event) {
     const newComment = { name, comment };
     
     // Fetch API to POST the new comment to the server
-    fetch('/comments', {
+    fetch('/comments.json', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ function submitComment(event) {
   }
   
   // Fetch API to GET the comments from the server
-  fetch('/comments')
+  fetch('/comments.json')
     .then(response => response.json())
     .then(data => {
       // Add each comment to the comment list
