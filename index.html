@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Blog</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <header>
+    <!-- Your header content goes here -->
+  </header>
+
+  <main>
+    <!-- Your blog posts and content go here -->
+    <section class="blog-post">
+      <h2>Blog Post Title</h2>
+      <p>Blog post content goes here...</p>
+
+      <div class="comments">
+        <h3>Comments</h3>
+        <ul id="comment-list">
+          <!-- Comments will be dynamically inserted here using JavaScript -->
+        </ul>
+        <form id="comment-form" onsubmit="submitComment(event)">
+          <input type="text" id="name" placeholder="Your name" required>
+          <textarea id="comment" placeholder="Your comment" required></textarea>
+          <button type="submit">Add Comment</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <!-- Your footer content goes here -->
+  </footer>
+</body>
+
+</html>
