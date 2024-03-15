@@ -25,6 +25,9 @@ app.post('/comments', (req, res) => {
 
   // Send a success response
   res.json({ success: true });
+  
+  console.log(req.body); // Check if the request body is printed in the console
+  // Rest of your code
 });
 
 // Endpoint to get all comments

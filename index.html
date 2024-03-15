@@ -2,32 +2,23 @@
 <html>
 <head>
   <title>Your Blog</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="script.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Your Blog</h1>
-  </header>
+  <h1>Your Blog</h1>
 
-  <main>
-    <h2>Blog Post Title</h2>
-    <p>Blog post content goes here...</p>
-  </main>
+  <h2>Blog Post Title</h2>
+  <p>Blog post content goes here...</p>
 
-  <section id="comments">
-    <h3>Comments</h3>
-    <ul id="comment-list"></ul>
+  <h2>Comments</h2>
+  <div id="comments"></div>
 
-    <form id="comment-form">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <textarea id="comment" placeholder="Your Comment" required></textarea>
-      <button type="submit">Add Comment</button>
-    </form>
-  </section>
+  <h3>Add Comment</h3>
+  <form id="commentForm">
+    <input type="text" id="nameInput" placeholder="Name"><br>
+    <textarea id="commentInput" placeholder="Comment"></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
 
-  <footer>
-    <p>&copy; 2022 Your Blog</p>
-  </footer>
+  <script src="server.js"></script>
 </body>
 </html>
