@@ -1,12 +1,5 @@
-// Comment data structure
-function Comment(name, text) {
-    this.name = name;
-    this.text = text;
-    this.replies = [];
-  }
-  
-  // Function to submit a new comment
-  function submitComment(event) {
+// Function to submit a new comment
+function submitComment(event) {
     event.preventDefault();
     
     const nameInput = document.getElementById('name');
@@ -15,11 +8,31 @@ function Comment(name, text) {
     const name = nameInput.value;
     const comment = commentInput.value;
     
-    const newComment = new Comment(name, comment);
-    addComment(newComment);
+    // Create a new comment object
+    const newComment = { name, comment };
     
-    nameInput.value = '';
-    commentInput.value = '';
+    // Fetch API to POST the new comment
+    fetch('/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newComment)
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          addComment(newComment);
+          nameInput.value = '';
+          commentInput.value = '';
+        } else {
+          alert('Failed to submit the comment. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the comment. Please try again.');
+      });
   }
   
   // Function to add a comment to the comment list
@@ -29,16 +42,41 @@ function Comment(name, text) {
     const li = document.createElement('li');
     li.innerHTML = `
       <strong>${comment.name}</strong>
-      <p>${comment.text}</p>
+      <p>${comment.comment}</p>
     `;
     
     commentList.appendChild(li);
   }
   
-  // Example comments
-  const comment1 = new Comment('John', 'Great post!');
-  const comment2 = new Comment('Jane', 'I enjoyed reading this.');
+  // Fetch API to GET the comments from the Markdown file
+  fetch('/comments.md')
+    .then(response => response.text())
+    .then(data => {
+      // Parse the Markdown file and extract the comments
+      const comments = parseComments(data);
+      
+      // Add each comment to the comment list
+      comments.forEach(comment => addComment(comment));
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred while fetching the comments. Please try again.');
+    });
   
-  // Add example comments to the comment list
-  addComment(comment1);
-  addComment(comment2);
+  // Parse the Markdown file and extract the comments
+  function parseComments(markdownText) {
+    // Code to parse the Markdown file and extract comment data
+    // You can use libraries like remark, marked, or regex to parse the Markdown
+    
+    // Sample code that assumes comments are written in a specific format:
+    const regex = /- \*\*([^*]+)\*\*\n\n  ([^\n]+)/g;
+    const comments = [];
+    let match;
+    
+    while ((match = regex.exec(markdownText)) !== null) {
+      const [, name, comment] = match;
+      comments.push({ name, comment });
+    }
+    
+    return comments;
+  }

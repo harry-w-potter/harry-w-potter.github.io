@@ -25,7 +25,7 @@
         <ul id="comment-list">
           <!-- Comments will be dynamically inserted here using JavaScript -->
         </ul>
-        <form id="comment-form" onsubmit="submitComment(event)">
+        <form id="comment-form">
           <input type="text" id="name" placeholder="Your name" required>
           <textarea id="comment" placeholder="Your comment" required></textarea>
           <button type="submit">Add Comment</button>
@@ -37,6 +37,8 @@
   <footer>
     <!-- Your footer content goes here -->
   </footer>
+
+  <script src="fetchComments.js"></script>
 </body>
 
 </html>
