@@ -7,7 +7,7 @@ function submitComment(event) {
     
     const name = nameInput.value;
     const comment = commentInput.value;
-    
+  
     // Create a new comment object
     const newComment = { name, comment };
     
@@ -34,6 +34,10 @@ function submitComment(event) {
         alert('An error occurred while submitting the comment. Please try again.');
       });
   }
+  
+  // Attach event listener to the comment form
+  const commentForm = document.getElementById('comment-form');
+  commentForm.addEventListener('submit', submitComment);
   
   // Function to add a comment to the comment list
   function addComment(comment) {
