@@ -34,7 +34,7 @@ document.getElementById('chat-form').addEventListener('submit', e => {
 
       // Send the FormData object to the server using a POST request
       fetch('https://webdev-dummy.herokuapp.com/messages.json', {
-        method: 'POST',
+        method: 'PUT',
         body: formData
       })
         .then(response => response.json())
