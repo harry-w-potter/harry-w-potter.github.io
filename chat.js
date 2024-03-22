@@ -13,40 +13,23 @@ document.getElementById('chat-form').addEventListener('submit', e => {
   // Clear the input field
   document.getElementById('chat-input').value = '';
 
-  // Add the message to the JSON file
-  fetch('messages.json')
+  // Create a new FormData object
+  const formData = new FormData();
+
+  // Add the message to the FormData object
+  formData.append('message', message);
+
+  // Send the FormData object to the server using a POST request
+  fetch('https://harry-w-potter.github.io/messages.json', {
+    method: 'POST',
+    body: formData
+  })
     .then(response => response.json())
     .then(data => {
-      data.messages.push(message);
-
-      // Convert the data back to JSON
-      const json = JSON.stringify(data);
-
-      // Create a Blob object with the JSON data
-      const blob = new Blob([json], { type: 'application/json' });
-
-      // Create a new File object with the Blob object
-      const file = new File([blob], 'messages.json');
-
-      // Create a FormData object with the File object
-      const formData = new FormData();
-      formData.append('file', file);
-
-      // Send the FormData object to the server using a POST request
-      fetch('https://webdev-dummy.herokuapp.com/messages.json', {
-        method: 'POST',
-        body: formData
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Message added to JSON file:', data);
-        })
-        .catch(error => {
-          console.error('Error adding message to JSON file:', error);
-        });
+      console.log('Message added to JSON file:', data);
     })
     .catch(error => {
-      console.error('Error fetching JSON file:', error);
+      console.error('Error adding message to JSON file:', error);
     });
 });
 
