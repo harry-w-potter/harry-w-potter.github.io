@@ -19,13 +19,27 @@ document.getElementById('chat-form').addEventListener('submit', e => {
     .then(data => {
       data.messages.push(message);
 
-      // Update the JSON file with the new message
-      fetch('messages.json', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
+      // Convert the data back to JSON
+      const json = JSON.stringify(data);
+
+      // Create a Blob object with the JSON data
+      const blob = new Blob([json], { type: 'application/json' });
+
+      // Create a new File object with the Blob object
+      const file = new File([blob], 'messages.json');
+
+      // Create a FormData object with the File object
+      const formData = new FormData();
+      formData.append('file', file);
+
+      // Send the FormData object to the server using a POST request
+      fetch('https://webdev-dummy.herokuapp.com/messages.json', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Message added to JSON file:', data);
+        });
     });
 });
