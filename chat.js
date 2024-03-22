@@ -34,12 +34,32 @@ document.getElementById('chat-form').addEventListener('submit', e => {
 
       // Send the FormData object to the server using a POST request
       fetch('https://webdev-dummy.herokuapp.com/messages.json', {
-        method: 'PUT',
+        method: 'POST',
         body: formData
       })
         .then(response => response.json())
         .then(data => {
           console.log('Message added to JSON file:', data);
+        })
+        .catch(error => {
+          console.error('Error adding message to JSON file:', error);
         });
+    })
+    .catch(error => {
+      console.error('Error fetching JSON file:', error);
     });
 });
+
+// Fetch the JSON file and display the messages in the chat window
+fetch('messages.json')
+  .then(response => response.json())
+  .then(data => {
+    data.messages.forEach(message => {
+      const li = document.createElement('li');
+      li.textContent = message;
+      document.getElementById('chat-messages').appendChild(li);
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching JSON file:', error);
+  });
