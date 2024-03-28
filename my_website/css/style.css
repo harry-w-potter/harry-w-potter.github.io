@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: "Lato";
+    background-color: snow;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+    
+.sidebar a.active {
+    background-color: #34536E;
+    color: white;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #3498DB;
+    color: white;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 15px;
+}
+
+.border{
+    border: 4px solid #10A0EA;
+    border-radius: 7px;
+}
+
+h1{
+    text-align: center;
+}
+
+.text{
+    text-align: justify;
+    padding: 5px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list{
+    padding: auto;
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
